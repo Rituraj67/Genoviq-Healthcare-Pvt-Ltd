@@ -1,0 +1,125 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Custom utility classes for the pharmaceutical theme */
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-300 px-6 py-3 rounded-md font-medium transition duration-150 ease-in-out;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-secondary-500 border border-secondary-500 hover:bg-secondary-50 focus:ring-secondary-300 px-6 py-3 rounded-md font-medium transition duration-150 ease-in-out;
+  }
+
+  .card-hover {
+    @apply hover:shadow-lg transition-shadow duration-300 hover:border-primary-300;
+  }
+
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600;
+  }
+
+  .gradient-secondary {
+    @apply bg-gradient-to-r from-secondary-500 to-secondary-600;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500;
+  }
+}
+
+*{
+  font-family: Ubuntu;
+}
+
+/* Slick slider custom styles */
+.slick-dots {
+  bottom: -40px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: theme("colors.secondary.300");
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  color: theme("colors.secondary.500");
+  opacity: 1;
+}
+
+.slick-prev,
+.slick-next {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  color: transparent;
+  border: none;
+  outline: none;
+  background: theme("colors.secondary.500");
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  color: transparent;
+  outline: none;
+  background: theme("colors.secondary.600");
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: "slick";
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0.75;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev {
+  left: 15px;
+}
+
+.slick-next {
+  right: 15px;
+}
+
+
+
+
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
