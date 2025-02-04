@@ -1,5 +1,6 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import customIcon from "../utils/CustomIcon";
 
 const GoogleMapPreview = () => {
   // Define coordinates (latitude, longitude) of your location
@@ -13,7 +14,7 @@ const GoogleMapPreview = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {/* Marker for the selected location */}
-        <Marker position={position}>
+        <Marker position={position} icon={customIcon}>
           <Popup>
             <strong>RML Hostel</strong> <br />
             Jankipuram, Lucknow, UP.
