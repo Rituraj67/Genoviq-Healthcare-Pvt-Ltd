@@ -70,7 +70,7 @@ const TestimonialCarousel = () => {
         className="mySwiper"
       >
         {testimonials.map((testimonial, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={index}>
             <TestimonialCard key={index} {...testimonial} index={index} />
           </SwiperSlide>
         ))}

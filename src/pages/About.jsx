@@ -1,4 +1,3 @@
-"use client";
 
 import { motion } from "framer-motion";
 import {
@@ -16,6 +15,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import banner from "../assets/AboutBG.webp"
 
 const AboutPage = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -58,7 +58,7 @@ const AboutPage = () => {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: `url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AboutBG-r7Z4pyQ2ttiti8P3xcYXlR15aR3oJ4.webp')`,
+              backgroundImage: `url('${banner}')`,
               transform: `translateY(${scrollY * 0.5}px)`,
             }}
           />

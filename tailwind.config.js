@@ -6,6 +6,16 @@ const config = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      screens: {
+        'xs': '520px',  // Extra Small Screens
+        'sm': '640px',  // Small (Default Tailwind)
+        'md': '768px',  // Medium (Default Tailwind)
+        'lg': '1024px', // Large (Default Tailwind)
+        'xl': '1280px', // Extra Large (Default Tailwind)
+        '2xl': '1536px', // Default Tailwind
+        'custom': '1100px', // Custom Breakpoint
+      },
+
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
