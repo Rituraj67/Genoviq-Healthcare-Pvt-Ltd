@@ -8,7 +8,7 @@ import ServicesSection from "../components/ServicesSections";
 import AboutSection from "../components/AboutSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import { Helmet } from "react-helmet-async";
-
+import banner from "../assets/HomeBG1.webp"
 const slideVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -85,15 +85,22 @@ function Home() {
       <div className="relative">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
+        <div
+          className="absolute top-20 inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('${banner}')`,
+            
+          }}
+        />
           <div className="absolute inset-0 bg-gradient-to-b from-secondary-50 to-primary-50 opacity-50" />
-          <div className="container relative pt-20 pb-24 md:pt-32 md:pb-40">
+          <div className="container relative pt-24 pb-24 md:pt-32 md:pb-40">
             <div className="flex flex-col items-center text-center space-y-8">
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
                 <span className="text-gradient ">Trusted Pharmaceuticals</span>
                 <br />
                 for a Healthier Tomorrow.
               </h1>
-              <p className="text-lg font-serif md:text-xl text-gray-600 max-w-2xl">
+              <p className="text-lg font-serif md:text-xl text-gray-700 max-w-2xl">
                 Delivering breakthrough medicines and transforming millions of
                 lives through cutting-edge pharmaceutical research and
                 development.
