@@ -6,8 +6,9 @@ import {
   Facebook,
   Twitter,
   LinkedinIcon as LinkedIn,
+  Instagram,
 } from "lucide-react";
-import logo from "../assets/logo.png";
+import logo from "../assets/GGOC.png";
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-white to-secondary-100 text-secondary-900">
@@ -20,7 +21,7 @@ const Footer = () => {
             className="h-48 w-auto "
           />
           <p className="text-sm text-secondary-600 text-center max-w-md">
-            "Genoviq, Healthcare Pvt Ltd is a fast -growing Pharmaceutical
+            "Genoviq Group Of Companies is a fast -growing Pharmaceutical
             Organization."
           </p>
         </div>
@@ -39,7 +40,7 @@ const Footer = () => {
                 <li className="flex items-center">
                   <MapPin className="w-16 mr-2 text-primary-400" />
                   <span className="text-secondary-200">
-                    Genoviq Healthcare Private Limited Plot No.64, Room 1 & 2,
+                    Genoviq Group Of Companies Limited Plot No.64, Room 1 & 2,
                     Kamlabad, Badauli, Behind Seva Hospital, Tahsil- BKT,
                     Lucknow-226201
                   </span>
@@ -121,19 +122,25 @@ const Footer = () => {
               </h3>
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="https://www.google.com" target="_blank"
                   className="text-secondary-200 hover:text-primary-300 transition-colors"
                 >
                   <Facebook className="w-6 h-6" />
                 </a>
                 <a
-                  href="#"
+                  href="#" target="_blank"
+                  className="text-secondary-200 hover:text-primary-300 transition-colors"
+                >
+                  <Instagram className="w-6 h-6" />
+                </a>
+                <a
+                  href="#" target="_blank"
                   className="text-secondary-200 hover:text-primary-300 transition-colors"
                 >
                   <Twitter className="w-6 h-6" />
                 </a>
                 <a
-                  href="#"
+                  href="#" target="_blank"
                   className="text-secondary-200 hover:text-primary-300 transition-colors"
                 >
                   <LinkedIn className="w-6 h-6" />
@@ -164,7 +171,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="mt-8 pt-8 border-t border-secondary-700 text-center text-sm text-secondary-400">
-            © {new Date().getFullYear()} Genoviq Healthcare. All rights
+            © {new Date().getFullYear()} Genoviq Group Of Companies. All rights
             reserved.
           </div>
         </div>

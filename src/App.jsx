@@ -9,6 +9,7 @@ import Contact from "./pages/Contact"
 import "./App.css"
 
 
+
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/career" element={<Career />} />
             <Route path="/contact" element={<Contact />} />
+            {/* <Route path="/newsroom" element={<Newsroom />} /> */}
           </Routes>
         </main>
         <Footer />

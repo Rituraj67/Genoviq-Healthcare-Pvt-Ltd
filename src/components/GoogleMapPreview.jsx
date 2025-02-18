@@ -1,6 +1,6 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import customIcon from "../utils/CustomIcon";
+import customIcon from "../utils/customIcon";
 
 const GoogleMapPreview = () => {
   // Define coordinates (latitude, longitude) of your location

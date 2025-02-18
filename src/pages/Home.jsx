@@ -9,6 +9,7 @@ import AboutSection from "../components/AboutSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import { Helmet } from "react-helmet-async";
 import banner from "../assets/HomeBG1.webp"
+import NewsSection from "../components/NewsSection";
 const slideVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -79,7 +80,7 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>Genoviq Healthcare</title>
+        <title>Genoviq Group of Companies</title>
       </Helmet>
 
       <div className="relative">
@@ -168,6 +169,9 @@ function Home() {
 
         {/* About Section*/}
         <AboutSection />
+
+         {/* News Section */}
+      <NewsSection />
 
         {/* Testimonials Section */}
         <TestimonialsSection />

@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
-import logo from "../assets/logo.png"
+import logo from "../assets/GGOC.png"
 
 const navItems = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Products", href: "/products" },
+  { name: "Newsroom", href: "/newsroom" },
   { name: "Careers", href: "/career" },
   { name: "Contact", href: "/contact" },
 ]
@@ -41,7 +42,7 @@ function Navbar() {
             <img
               src={logo}
               alt="Genoviq Healthcare Logo"
-              className="h-32 w-auto object-contain"
+              className="h-20 w-auto object-contain"
             />
           </Link>
 

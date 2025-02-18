@@ -31,7 +31,7 @@ const ContactPage = () => {
   return (
     <>
     <Helmet>
-      <title>Contact - Genoviq Healthcare</title>
+      <title>Contact - Genoviq Group of Companies</title>
     </Helmet>
       <div className="min-h-screen bg-gradient-to-b from-gray-50 container relative pt-20 pb-24 md:pt-32 md:pb-40 to-gray-100">
         {/* Background Image */}

@@ -50,13 +50,13 @@ const AboutPage = () => {
   return (
     <>
       <Helmet>
-        <title>About - Genoviq Healthcare</title>
+        <title>About - Group of Companies</title>
       </Helmet>
-      <div className="min-h-screen">
+      <div className="min-h-screen relative top-20">
         {/* Hero Section with Parallax */}
         <section className="relative h-screen overflow-hidden">
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-contain bg-center"
             style={{
               backgroundImage: `url('${banner}')`,
               transform: `translateY(${scrollY * 0.5}px)`,

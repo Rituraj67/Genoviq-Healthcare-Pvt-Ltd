@@ -40,6 +40,20 @@ const testimonials = [
     position: "Quality Assurance Director",
     image: "/placeholder.svg?height=100&width=100",
   },
+  {
+    quote:
+      "Being part of Genoviq means being part of a family that's dedicated to making a difference. The support and opportunities for growth are unmatched.",
+    name: "Rituraj Singh",
+    position: "Quality Assurance Director",
+    image: "/placeholder.svg?height=100&width=100",
+  },
+  {
+    quote:
+      "Being part of Genoviq means being part of a family that's dedicated to making a difference. The support and opportunities for growth are unmatched.",
+    name: "Abhinesh Singh",
+    position: "Quality Assurance Director",
+    image: "/placeholder.svg?height=100&width=100",
+  },
 ];
 
 const TestimonialCarousel = () => {
@@ -53,19 +67,19 @@ const TestimonialCarousel = () => {
         initialSlide={1}
         effect={"coverflow"}
         grabCursor={true}
-        slidesPerView={"auto"}
-        autoplay={{ delay: 3000, disableOnInteraction: true }} 
-        loop 
-      
+        slidesPerView={"auto"} // Change "auto" to a fixed number for better control
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        loop={true}
+        navigation={true} // Ensure navigation buttons are enabled
+        pagination={{ clickable: true }} // Enable pagination
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
           depth: 100,
           modifier: 1,
           slideShadows: true,
-          
         }}
-        pagination={true}
+       
         modules={[EffectCoverflow, Pagination, Autoplay]}
         className="mySwiper"
       >
