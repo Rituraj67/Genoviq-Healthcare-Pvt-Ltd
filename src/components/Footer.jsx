@@ -11,7 +11,7 @@ import {
 import logo from "../assets/GGOC.png";
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-white to-secondary-100 text-secondary-900">
+    <footer className="bg-gradient-to-b from-white top-20 relative to-secondary-100 text-secondary-900">
       {/* Upper section with logo */}
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center">

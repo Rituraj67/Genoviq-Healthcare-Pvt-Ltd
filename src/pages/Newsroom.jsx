@@ -46,8 +46,9 @@ const Newsroom = () => {
     return matchesYear && matchesSearch
   })
 
-  return (
-    <div className="min-h-screen top-20 relative bg-gray-50">
+  return (<>
+
+    <div className="min-h-screen top-20  relative bg-gray-50">
       {/* Hero Section */}
       <NewsHero />
 
@@ -72,6 +73,7 @@ const Newsroom = () => {
         </div>
       </div>
     </div>
+  </>
   )
 }
 
