@@ -83,7 +83,7 @@ function Home() {
         <title>Genoviq Group of Companies</title>
       </Helmet>
 
-      <div className="relative">
+      <div className="relative ">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
         <div

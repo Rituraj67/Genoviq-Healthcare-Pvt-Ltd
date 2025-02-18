@@ -3,7 +3,7 @@ import tailwindcssAnimate from "tailwindcss-animate";
 /** @type {import('tailwindcss').Config} */
 const config = {
   darkMode: ["class"],
-  content: ["./src/**/*.{js,jsx,ts,tsx}", "app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
+  content: [ "./index.html","./src/**/*.{js,jsx,ts,tsx}", "app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       screens: {
