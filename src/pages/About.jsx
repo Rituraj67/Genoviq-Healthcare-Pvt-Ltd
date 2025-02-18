@@ -1,6 +1,6 @@
-import { motion } from "framer-motion"
-import useEmblaCarousel from "embla-carousel-react"
-import Autoplay from "embla-carousel-autoplay"
+import { motion } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Building2,
   Users,
@@ -22,9 +22,9 @@ import {
   Truck,
   FileCheck,
   DollarSign,
-} from "lucide-react"
-import { useEffect, useState } from "react"
-import banner from "../assets/AboutBG.webp"
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import banner from "../assets/AboutBG.webp";
 
 const quickFacts = [
   {
@@ -45,17 +45,16 @@ const quickFacts = [
     value: "$ 2.8 Billion",
     delay: 0.6,
   },
-]
+];
 
 const AboutPage = () => {
-  const [scrollY, setScrollY] = useState(0)
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen top-20 relative">
@@ -100,7 +99,6 @@ const AboutPage = () => {
           </div>
         </motion.div>
       </section>
-
       {/* About Us Section */}
       <section className="relative py-24 overflow-hidden">
         {/* Animated background elements */}
@@ -138,7 +136,9 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1a237e] mb-4">About Us</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#1a237e] mb-4">
+              About Us
+            </h2>
             <div className="flex justify-center mb-8">
               <motion.div
                 initial={{ width: 0 }}
@@ -160,21 +160,29 @@ const AboutPage = () => {
               className="space-y-6"
             >
               <p className="text-lg text-gray-700 leading-relaxed">
-                At Genoviq Healthcare, we are pioneering the future of pharmaceutical excellence. With over eight
-                decades of unwavering commitment to healthcare innovation, we have established ourselves as a global
-                leader in developing and delivering life-changing medical solutions.
+                At Genoviq Healthcare, we are pioneering the future of
+                pharmaceutical excellence. With over eight decades of unwavering
+                commitment to healthcare innovation, we have established
+                ourselves as a global leader in developing and delivering
+                life-changing medical solutions.
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
-                Our state-of-the-art research facilities and dedicated team of experts work tirelessly to discover
-                breakthrough treatments that address the world's most pressing health challenges. We believe in making
-                quality healthcare accessible to all, driving positive change in communities worldwide.
+                Our state-of-the-art research facilities and dedicated team of
+                experts work tirelessly to discover breakthrough treatments that
+                address the world's most pressing health challenges. We believe
+                in making quality healthcare accessible to all, driving positive
+                change in communities worldwide.
               </p>
 
               {/* Animated stats */}
               <div className="grid grid-cols-2 gap-4 mt-8">
                 {[
                   { icon: Globe, label: "Global Presence", value: "100+" },
-                  { icon: GraduationCap, label: "Research Papers", value: "500+" },
+                  {
+                    icon: GraduationCap,
+                    label: "Research Papers",
+                    value: "500+",
+                  },
                   { icon: Award, label: "Awards Won", value: "50+" },
                   { icon: Pill, label: "Products", value: "200+" },
                 ].map((stat, index) => (
@@ -187,7 +195,9 @@ const AboutPage = () => {
                     className="bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-lg"
                   >
                     <stat.icon className="w-6 h-6 text-[#1a237e] mb-2" />
-                    <div className="text-2xl font-bold text-[#8e1c1c]">{stat.value}</div>
+                    <div className="text-2xl font-bold text-[#8e1c1c]">
+                      {stat.value}
+                    </div>
                     <div className="text-sm text-gray-600">{stat.label}</div>
                   </motion.div>
                 ))}
@@ -207,12 +217,14 @@ const AboutPage = () => {
                   {
                     icon: Microscope,
                     title: "Research Excellence",
-                    description: "Cutting-edge research facilities and innovative methodologies",
+                    description:
+                      "Cutting-edge research facilities and innovative methodologies",
                   },
                   {
                     icon: HeartPulse,
                     title: "Patient-Centric",
-                    description: "Committed to improving patient outcomes worldwide",
+                    description:
+                      "Committed to improving patient outcomes worldwide",
                   },
                   {
                     icon: Flask,
@@ -222,7 +234,8 @@ const AboutPage = () => {
                   {
                     icon: Sparkles,
                     title: "Quality Assurance",
-                    description: "Highest standards in pharmaceutical manufacturing",
+                    description:
+                      "Highest standards in pharmaceutical manufacturing",
                   },
                 ].map((feature, index) => (
                   <motion.div
@@ -237,8 +250,12 @@ const AboutPage = () => {
                     <div className="bg-[#1a237e]/10 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                       <feature.icon className="w-6 h-6 text-[#1a237e]" />
                     </div>
-                    <h3 className="text-lg font-semibold text-[#1a237e] mb-2">{feature.title}</h3>
-                    <p className="text-sm text-gray-600">{feature.description}</p>
+                    <h3 className="text-lg font-semibold text-[#1a237e] mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {feature.description}
+                    </p>
                   </motion.div>
                 ))}
               </div>
@@ -270,11 +287,6 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-
-
-      <GroupCompanies />
-
-
       {/* Quick Facts Section */}
       <section className="py-20 bg-gradient-to-b from-[#1a237e] to-[#8e1c1c]">
         <div className="container mx-auto px-4">
@@ -284,16 +296,16 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold text-center text-white mb-16"
           >
-           <h2 className="text-4xl font-bold  mb-4">Quick Facts</h2>
+            <h2 className="text-4xl font-bold  mb-4">Quick Facts</h2>
             <div className="flex justify-center mb-8">
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "100px" }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="h-1 bg-white"
-            />
-          </div>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: "100px" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1 }}
+                className="h-1 bg-white"
+              />
+            </div>
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -310,15 +322,22 @@ const AboutPage = () => {
                 <div className="bg-[#1a237e] rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-white">
                   {fact.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-[#1a237e]">{fact.title}</h3>
-                <p className="text-2xl font-bold text-[#8e1c1c]">{fact.value}</p>
+                <h3 className="text-xl font-semibold mb-2 text-[#1a237e]">
+                  {fact.title}
+                </h3>
+                <p className="text-2xl font-bold text-[#8e1c1c]">
+                  {fact.value}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      <GroupCompanies />
 
+
+      <BoardOfDirectors />
 
 
       {/* Leadership Section */}
@@ -330,16 +349,18 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold text-center text-[#1a237e] mb-16"
           >
-            <h2 className="text-4xl font-bold text-[#1a237e] mb-4">Our Leadership</h2>
+            <h2 className="text-4xl font-bold text-[#1a237e] mb-4">
+              Our Leadership
+            </h2>
             <div className="flex justify-center mb-8">
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: "100px" }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="h-1 bg-[#8e1c1c]"
-            />
-          </div>
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: "100px" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1 }}
+                className="h-1 bg-[#8e1c1c]"
+              />
+            </div>
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -358,22 +379,23 @@ const AboutPage = () => {
                 className="bg-white rounded-lg shadow-lg p-8 text-center transform transition-all duration-300"
               >
                 <div className="w-24 h-24 rounded-full bg-gray-200 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-[#1a237e] mb-2">{leader.title}</h3>
+                <h3 className="text-lg font-semibold text-[#1a237e] mb-2">
+                  {leader.title}
+                </h3>
                 <p className="text-xl text-[#8e1c1c]">{leader.name}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-
       {/* New sections added here */}
       <Milestones />
       <Awards />
       <Quality />
       <CoreValues />
     </div>
-  )
-}
+  );
+};
 
 const GroupCompanies = () => {
   const companies = [
@@ -387,16 +409,18 @@ const GroupCompanies = () => {
     {
       name: "Novaxia Pharma",
       logo: "/placeholder.svg?height=100&width=200",
-      description: "Specialized in development and manufacturing of high-quality pharmaceutical products.",
+      description:
+        "Specialized in development and manufacturing of high-quality pharmaceutical products.",
       established: "2020",
     },
     {
       name: "Neopulse Lifesciences",
       logo: "/placeholder.svg?height=100&width=200",
-      description: "Research-driven biotechnology company advancing medical breakthroughs.",
+      description:
+        "Research-driven biotechnology company advancing medical breakthroughs.",
       established: "2021",
     },
-  ]
+  ];
 
   return (
     <section className="py-20 bg-gradient-to-b from-white to-gray-50">
@@ -437,7 +461,9 @@ const GroupCompanies = () => {
                   className="max-h-full object-contain"
                 />
               </div>
-              <h3 className="text-xl font-bold text-[#1a237e] mb-4">{company.name}</h3>
+              <h3 className="text-xl font-bold text-[#1a237e] mb-4">
+                {company.name}
+              </h3>
               <p className="text-gray-600 mb-4">{company.description}</p>
               <div className="flex items-center justify-between text-sm text-gray-500">
                 <span>Est. {company.established}</span>
@@ -448,38 +474,42 @@ const GroupCompanies = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const Milestones = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()])
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
 
   const milestones = [
     {
       title: "Company Foundation",
-      description: "Establishment of Genoviq Healthcare with a vision to transform healthcare accessibility.",
+      description:
+        "Establishment of Genoviq Healthcare with a vision to transform healthcare accessibility.",
       image: "/placeholder.svg?height=200&width=300",
       year: "2019",
     },
     {
       title: "Market Expansion",
-      description: "Successfully expanded operations to 10+ states across India.",
+      description:
+        "Successfully expanded operations to 10+ states across India.",
       image: "/placeholder.svg?height=200&width=300",
       year: "2020",
     },
     {
       title: "Product Portfolio Growth",
-      description: "Reached milestone of 100+ products in various therapeutic segments.",
+      description:
+        "Reached milestone of 100+ products in various therapeutic segments.",
       image: "/placeholder.svg?height=200&width=300",
       year: "2021",
     },
     {
       title: "Digital Transformation",
-      description: "Implemented cutting-edge digital solutions for better healthcare delivery.",
+      description:
+        "Implemented cutting-edge digital solutions for better healthcare delivery.",
       image: "/placeholder.svg?height=200&width=300",
       year: "2022",
     },
-  ]
+  ];
 
   return (
     <section className="py-20 bg-[#1a237e] text-white overflow-hidden">
@@ -536,50 +566,56 @@ const Milestones = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const Awards = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()])
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
 
   const awards = [
     {
       title: "Excellence in Healthcare",
-      description: "Recognized for outstanding contribution to healthcare accessibility",
+      description:
+        "Recognized for outstanding contribution to healthcare accessibility",
       image: "/placeholder.svg?height=200&width=200",
       year: "2023",
     },
     {
       title: "Best Growth Performance",
-      description: "Awarded for exceptional business growth and market expansion",
+      description:
+        "Awarded for exceptional business growth and market expansion",
       image: "/placeholder.svg?height=200&width=200",
       year: "2022",
     },
     {
       title: "Innovation Award",
-      description: "Honored for innovative approaches in pharmaceutical marketing",
+      description:
+        "Honored for innovative approaches in pharmaceutical marketing",
       image: "/placeholder.svg?height=200&width=200",
       year: "2021",
     },
     {
       title: "Innovation Award",
-      description: "Honored for innovative approaches in pharmaceutical marketing",
+      description:
+        "Honored for innovative approaches in pharmaceutical marketing",
       image: "/placeholder.svg?height=200&width=200",
       year: "2021",
     },
     {
       title: "Innovation Award",
-      description: "Honored for innovative approaches in pharmaceutical marketing",
+      description:
+        "Honored for innovative approaches in pharmaceutical marketing",
       image: "/placeholder.svg?height=200&width=200",
       year: "2021",
     },
     {
       title: "Innovation Award",
-      description: "Honored for innovative approaches in pharmaceutical marketing",
+      description:
+        "Honored for innovative approaches in pharmaceutical marketing",
       image: "/placeholder.svg?height=200&width=200",
       year: "2021",
     },
-  ]
+  ];
 
   return (
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
@@ -590,7 +626,9 @@ const Awards = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-[#1a237e] mb-4">Awards & Recognition</h2>
+          <h2 className="text-4xl font-bold text-[#1a237e] mb-4">
+            Awards & Recognition
+          </h2>
           <div className="flex justify-center mb-8">
             <motion.div
               initial={{ width: 0 }}
@@ -621,8 +659,12 @@ const Awards = () => {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <div className="text-sm font-semibold text-[#8e1c1c] mb-4">{award.year}</div>
-                  <h3 className="text-xl font-bold text-[#1a237e] mb-4">{award.title}</h3>
+                  <div className="text-sm font-semibold text-[#8e1c1c] mb-4">
+                    {award.year}
+                  </div>
+                  <h3 className="text-xl font-bold text-[#1a237e] mb-4">
+                    {award.title}
+                  </h3>
                   <p className="text-gray-600">{award.description}</p>
                 </div>
               </motion.div>
@@ -631,15 +673,16 @@ const Awards = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const Quality = () => {
   const qualityAspects = [
     {
       icon: Shield,
       title: "Quality Assurance / Quality Control",
-      description: "Maintaining highest standards through rigorous quality management systems",
+      description:
+        "Maintaining highest standards through rigorous quality management systems",
     },
     {
       icon: Network,
@@ -649,19 +692,22 @@ const Quality = () => {
     {
       icon: Building2,
       title: "Contract Manufacturing",
-      description: "Collaboration with WHO-GMP certified manufacturing facilities",
+      description:
+        "Collaboration with WHO-GMP certified manufacturing facilities",
     },
     {
       icon: Truck,
       title: "Distribution / Supply Chain",
-      description: "Efficient and reliable distribution network ensuring timely delivery",
+      description:
+        "Efficient and reliable distribution network ensuring timely delivery",
     },
     {
       icon: FileCheck,
       title: "Verification of Product",
-      description: "Thorough verification process ensuring product authenticity",
+      description:
+        "Thorough verification process ensuring product authenticity",
     },
-  ]
+  ];
 
   return (
     <section className="py-20 bg-gradient-to-b from-[#1a237e] to-[#8e1c1c] text-white">
@@ -705,15 +751,16 @@ const Quality = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 const CoreValues = () => {
   const values = [
     {
       icon: Heart,
       title: "Care",
-      description: "Putting patient well-being at the heart of everything we do",
+      description:
+        "Putting patient well-being at the heart of everything we do",
     },
     {
       icon: Target,
@@ -728,9 +775,10 @@ const CoreValues = () => {
     {
       icon: CheckCircle2,
       title: "Integrity",
-      description: "Maintaining ethical practices and transparency in all operations",
+      description:
+        "Maintaining ethical practices and transparency in all operations",
     },
-  ]
+  ];
 
   return (
     <section className="py-20 bg-gray-50">
@@ -741,7 +789,9 @@ const CoreValues = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-[#1a237e] mb-4">Our Core Values</h2>
+          <h2 className="text-4xl font-bold text-[#1a237e] mb-4">
+            Our Core Values
+          </h2>
           <div className="flex justify-center mb-8">
             <motion.div
               initial={{ width: 0 }}
@@ -780,15 +830,119 @@ const CoreValues = () => {
               >
                 <value.icon className="w-8 h-8 text-[#1a237e]" />
               </motion.div>
-              <h3 className="text-xl font-bold text-[#1a237e] mb-4">{value.title}</h3>
+              <h3 className="text-xl font-bold text-[#1a237e] mb-4">
+                {value.title}
+              </h3>
               <p className="text-gray-600">{value.description}</p>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default AboutPage
 
+
+const BoardOfDirectors = () => {
+  const [emblaRef] = useEmblaCarousel({ loop: true, align: "start" }, [
+    Autoplay(),
+  ]);
+
+  const directors = [
+    {
+      name: "Dr. Jane Smith",
+      designation: "Chairperson",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    {
+      name: "John Doe",
+      designation: "CEO",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    {
+      name: "Emily Johnson",
+      designation: "CFO",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    {
+      name: "Michael Brown",
+      designation: "COO",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    {
+      name: "Sarah Lee",
+      designation: "CTO",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+  ];
+
+  return (
+    <section className="py-20 bg-gradient-to-b from-[#1a237e] to-[#8e1c1c] text-white overflow-hidden">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold mb-4">Board of Directors</h2>
+          <div className="flex justify-center mb-8">
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "100px" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="h-1 bg-white"
+            />
+          </div>
+        </motion.div>
+
+        <div className="embla overflow-hidden" ref={emblaRef}>
+          <div className="flex">
+            {directors.map((director, index) => (
+              <motion.div
+                key={director.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="flex-[0_0_100%] sm:flex-[0_0_50%] md:flex-[0_0_33.33%] lg:flex-[0_0_25%] px-4"
+              >
+                <motion.div
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden"
+                >
+                  <div className="relative aspect-square overflow-hidden">
+                    <img
+                      src={director.image || "/placeholder.svg"}
+                      alt={director.name}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2">{director.name}</h3>
+                    <p className="text-gray-300 mb-4">{director.designation}</p>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-white text-[#1a237e] px-4 py-2 rounded-full text-sm font-medium hover:bg-[#8e1c1c] hover:text-white transition-colors duration-300"
+                    >
+                      Know More
+                    </motion.button>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AboutPage;

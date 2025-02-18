@@ -175,3 +175,28 @@ html {
   object-fit: cover;
 }
 
+/* Add these new styles for the Board of Directors section */
+.embla .flex > div {
+  padding: 0 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .embla .flex > div {
+    flex: 0 0 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .embla .flex > div {
+    flex: 0 0 33.33%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .embla .flex > div {
+    flex: 0 0 25%;
+  }
+}
+
+
+
