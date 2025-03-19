@@ -1,54 +1,17 @@
-"use client"
-import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
-import NewsCarousel from "./NewsCarousel"
-
-const newsData = [
-  {
-    image: "/placeholder.svg?height=400&width=600",
-    date: "Feb 15, 2024",
-    title: "Genoviq Launches Revolutionary Cancer Treatment",
-    description:
-      "Breakthrough therapy shows promising results in clinical trials, marking a significant advancement in oncology treatment.",
-    category: "Product Launch",
-    link: "/news/cancer-treatment-launch",
-  },
-  {
-    image: "/placeholder.svg?height=400&width=600",
-    date: "Feb 10, 2024",
-    title: "Global Healthcare Summit 2024",
-    description:
-      "Join us for the annual Global Healthcare Summit where industry leaders discuss the future of healthcare.",
-    category: "Event",
-    link: "/news/healthcare-summit",
-  },
-  {
-    image: "/placeholder.svg?height=400&width=600",
-    date: "Feb 05, 2024",
-    title: "Research Breakthrough in Diabetes Management",
-    description: "Our research team has made significant progress in developing new diabetes management solutions.",
-    category: "Research",
-    link: "/news/diabetes-research",
-  },
-  {
-    image: "/placeholder.svg?height=400&width=600",
-    date: "Jan 28, 2024",
-    title: "Genoviq Receives Excellence in Innovation Award",
-    description: "Recognized for outstanding contributions to pharmaceutical innovation and patient care.",
-    category: "Achievement",
-    link: "/news/innovation-award",
-  },
-  {
-    image: "/placeholder.svg?height=400&width=600",
-    date: "Jan 20, 2024",
-    title: "New Research Facility Opening",
-    description: "State-of-the-art research facility opens doors to advance pharmaceutical research and development.",
-    category: "Company News",
-    link: "/news/facility-opening",
-  },
-]
+"use client";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import NewsCarousel from "./NewsCarousel";
+import { useAppData } from "../context/AppDataContext";
 
 const NewsSection = () => {
+  const { news } = useAppData();
+
+  const getLatestFiveNews = news
+    .filter((item) => item.date)
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 5);
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto">
@@ -88,11 +51,10 @@ const NewsSection = () => {
           </motion.div>
         </div>
 
-        <NewsCarousel news={newsData} />
+        <NewsCarousel news={getLatestFiveNews} />
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default NewsSection
-
+export default NewsSection;

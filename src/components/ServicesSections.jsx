@@ -9,10 +9,10 @@ const services = [
       "Health care or healthcare is the improvement of health via the prevention, diagnosis, treatment, amelioration or cure of disease, illness, injury, and other physical and mental impairments in people.",
   },
   {
-    type: "ivd",
-    title: "IVD",
+    type: "institutions",
+    title: "INSTITUTIONS",
     description:
-      "Tests done on samples such as blood or tissue that have been taken from the human body. In vitro diagnostics can detect diseases or other conditions.",
+      "Deals with the supply and sale of medicines to government institutions. This segment primarily operates through contracts and tenders with government bodies and public sector organizations.",
   },
   {
     type: "oncology",

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const TestimonialCard = ({ quote, name, position, image, index }) => {
+const TestimonialCard = ({ message, name, designation, profilePicture, index }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -14,7 +14,7 @@ const TestimonialCard = ({ quote, name, position, image, index }) => {
         {/* Quote */}
         <p className="text-gray-700 mb-6 relative z-10">
           <span className="absolute -top-4 -left-2 sm:text-5xl text-wrap text-primary-500 opacity-60">"</span>
-          <span className="text-white">{quote}</span>
+          <span className="text-white">{message}</span>
         </p>
       </div>
 
@@ -22,7 +22,7 @@ const TestimonialCard = ({ quote, name, position, image, index }) => {
       <div className="flex items-center gap-4">
         <motion.div whileHover={{ scale: 1.1 }} className="relative">
           <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-500">
-            <img src={image || "/placeholder.svg"} alt={name} className="w-full h-full object-cover" />
+            <img src={profilePicture || "/placeholder.svg"} alt={name} className="w-full h-full object-cover" />
           </div>
           <motion.div
             className="absolute -bottom-1 -right-1 w-4 h-4 bg-primary-500 rounded-full border-2 border-white"
@@ -32,7 +32,7 @@ const TestimonialCard = ({ quote, name, position, image, index }) => {
         </motion.div>
         <div>
           <h4 className="font-semibold text-secondary-900">{name}</h4>
-          <p className="text-sm text-primary-900">{position}</p>
+          <p className="text-sm text-primary-900">{designation}</p>
         </div>
       </div>
     </motion.div>

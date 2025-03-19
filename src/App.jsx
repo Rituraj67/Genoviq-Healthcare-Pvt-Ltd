@@ -8,12 +8,18 @@ import Career from "./pages/Career"
 import Contact from "./pages/Contact"
 import "./App.css"
 import Newsroom from "./pages/Newsroom"
+import LightningLoader from "./utils/loaders/LightningLoader"
+import { useAppData } from "./context/AppDataContext"
 
 
 
 function App() {
+  const {isLoading}= useAppData()
+
+  
   return (
     <Router>
+    <LightningLoader isLoading={isLoading}/>
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">

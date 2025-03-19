@@ -8,7 +8,7 @@ import ServicesSection from "../components/ServicesSections";
 import AboutSection from "../components/AboutSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import { Helmet } from "react-helmet-async";
-import banner from "../assets/HomeBG1.webp"
+import banner from "../assets/HomeBG1.png"
 import NewsSection from "../components/NewsSection";
 const slideVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -72,22 +72,22 @@ function Home() {
   ];
 
   const statistics = [
-    { number: 5000, label: "Employees" },
-    { number: 500, label: "Products" },
-    { number: 50, label: "States" },
+    { number: 50, label: "Employees" },
+    { number: 40, label: "Products" },
+    { number: 9, label: "States" },
   ];
 
   return (
     <>
       <Helmet>
-        <title>Genoviq Group of Companies</title>
+        <title>Genoviq Healthcare</title>
       </Helmet>
 
       <div className="relative ">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
         <div
-          className="absolute top-20 inset-0 bg-cover bg-center"
+          className="absolute top-24 inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url('${banner}')`,
             

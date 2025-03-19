@@ -10,53 +10,14 @@ import "swiper/css/pagination";
 // import required modules
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 import TestimonialCard from "./TestimonialCard";
+import { useAppData } from "../context/AppDataContext";
 
-const testimonials = [
-  {
-    quote:
-      "Working at Genoviq has been an incredible journey of growth and innovation. The collaborative environment and cutting-edge research opportunities have allowed me to make a real impact in healthcare.",
-    name: "Dr. Sarah Chen",
-    position: "Senior Research Scientist",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    quote:
-      "What sets Genoviq apart is our unwavering commitment to patient care. Every day, we work towards making healthcare more accessible and effective for people worldwide.",
-    name: "James Rodriguez",
-    position: "Clinical Development Manager",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    quote:
-      "The culture of innovation at Genoviq is extraordinary. We're encouraged to think outside the box and pursue breakthrough solutions that can transform lives.",
-    name: "Dr. Emily Thompson",
-    position: "Head of R&D",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    quote:
-      "Being part of Genoviq means being part of a family that's dedicated to making a difference. The support and opportunities for growth are unmatched.",
-    name: "Michael Chang",
-    position: "Quality Assurance Director",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    quote:
-      "Being part of Genoviq means being part of a family that's dedicated to making a difference. The support and opportunities for growth are unmatched.",
-    name: "Rituraj Singh",
-    position: "Quality Assurance Director",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    quote:
-      "Being part of Genoviq means being part of a family that's dedicated to making a difference. The support and opportunities for growth are unmatched.",
-    name: "Abhinesh Singh",
-    position: "Quality Assurance Director",
-    image: "/placeholder.svg?height=100&width=100",
-  },
-];
+
 
 const TestimonialCarousel = () => {
+
+  const {testimonials}= useAppData()
+
   const items = testimonials.map((testimonial, index) => (
     <TestimonialCard key={index} {...testimonial} index={index} />
   ));
@@ -71,6 +32,7 @@ const TestimonialCarousel = () => {
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}
         navigation={true} // Ensure navigation buttons are enabled
+        
         pagination={{ clickable: true }} // Enable pagination
         coverflowEffect={{
           rotate: 50,

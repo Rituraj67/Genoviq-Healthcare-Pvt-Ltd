@@ -48,7 +48,7 @@ function CountUp({ end, duration = 2, label }) {
     >
       <span className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-500">
         {count}
-        {end >= 100 && "+"}
+        {end >= 10 && "+"}
       </span>
       <span className="text-sm md:text-base text-gray-600 mt-2 uppercase tracking-wider">{label}</span>
     </motion.div>

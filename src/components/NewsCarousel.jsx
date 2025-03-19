@@ -52,7 +52,7 @@ const NewsCarousel = ({ news }) => {
   const visibleNews = news.slice(currentIndex * getItemsPerPage(), (currentIndex + 1) * getItemsPerPage())
 
   return (
-    <div className="relative px-4 md:px-8 lg:px-12">
+    <div className="relative max-w-screen-xl mx-auto px-4 md:px-8 lg:px-12">
       <div className="overflow-hidden">
         <motion.div
           drag="x"
@@ -61,12 +61,12 @@ const NewsCarousel = ({ news }) => {
           onDragStart={() => setIsDragging(true)}
           onDragEnd={handleDragEnd}
           animate={controls}
-          className="flex gap-6"
+          className="flex gap-8 justify-center w-full"
         >
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              className="flex gap-6 w-full"
+              className="flex gap-8 justify-center w-full"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
@@ -75,7 +75,7 @@ const NewsCarousel = ({ news }) => {
               {visibleNews.map((item, index) => (
                 <div
                   key={index}
-                  className="w-full min-w-[calc(100%/3-1rem)] sm:min-w-[calc(50%-1rem)] lg:min-w-[calc(33.333%-1rem)]"
+                  className="flex-[1_1_30%] min-w-[250px] max-w-[400px]"
                 >
                   <NewsCard {...item} />
                 </div>
@@ -123,4 +123,3 @@ const NewsCarousel = ({ news }) => {
 }
 
 export default NewsCarousel
-

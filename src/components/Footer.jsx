@@ -8,7 +8,7 @@ import {
   LinkedinIcon as LinkedIn,
   Instagram,
 } from "lucide-react";
-import logo from "../assets/GGOC.png";
+import logo from "../assets/GHPL.png";
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-white top-20 relative to-secondary-100 text-secondary-900">
@@ -21,7 +21,7 @@ const Footer = () => {
             className="h-48 w-auto "
           />
           <p className="text-sm text-secondary-600 text-center max-w-md">
-            "Genoviq Group Of Companies is a fast -growing Pharmaceutical
+            "Genoviq Healthcare is a fast - growing Pharmaceutical
             Organization."
           </p>
         </div>
@@ -40,7 +40,7 @@ const Footer = () => {
                 <li className="flex items-center">
                   <MapPin className="w-16 mr-2 text-primary-400" />
                   <span className="text-secondary-200">
-                    Genoviq Group Of Companies Limited Plot No.64, Room 1 & 2,
+                    Genoviq Healthcare Private Limited, Plot No.64, Room 1 & 2,
                     Kamlabad, Badauli, Behind Seva Hospital, Tahsil- BKT,
                     Lucknow-226201
                   </span>
@@ -51,7 +51,7 @@ const Footer = () => {
                     href="mailto:info@genoviq.com"
                     className="text-secondary-200 hover:text-primary-300 transition-colors"
                   >
-                    info.genoviq@gmail.com
+                    contact@genoviqhealthcare.com
                   </a>
                 </li>
                 <li className="flex items-center">
@@ -171,7 +171,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="mt-8 pt-8 border-t border-secondary-700 text-center text-sm text-secondary-400">
-            © {new Date().getFullYear()} Genoviq Group Of Companies. All rights
+            © {new Date().getFullYear()} Genoviq Healthcare. All rights
             reserved.
           </div>
         </div>

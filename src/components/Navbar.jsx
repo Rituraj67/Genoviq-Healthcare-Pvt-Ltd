@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { motion } from "framer-motion"
-import logo from "../assets/GGOC.png"
+import logo from "../assets/GHPL.png"
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -15,12 +15,13 @@ const navItems = [
 function Navbar() {
   const [activeItem, setActiveItem] = useState("Home")
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const location = useLocation();
 
   useEffect(() => {
     // Get the current path from the URL
     const currentPath = "/"+ window.location.pathname.split("/")[1];
     console.log(currentPath);
-
+    
     // Find the matching nav item
     const matchingItem = navItems.find((item) => currentPath == item.href);
     console.log(matchingItem);
@@ -30,19 +31,19 @@ function Navbar() {
     } else {
       setActiveItem(""); // Reset if no match is found
     }
-  }, []);
+  }, [location]);
   
 
   return (
     <nav className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-md shadow-sm">
       <div className="container mx-auto px-4">
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex h-24 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img
               src={logo}
               alt="Genoviq Healthcare Logo"
-              className="h-20 w-auto object-contain"
+              className="h-24 w-auto object-contain"
             />
           </Link>
 

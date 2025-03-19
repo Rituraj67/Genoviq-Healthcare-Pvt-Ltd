@@ -31,9 +31,9 @@ const ContactPage = () => {
   return (
     <>
     <Helmet>
-      <title>Contact - Genoviq Group of Companies</title>
+      <title>Contact - Genoviq Healthcare</title>
     </Helmet>
-      <div className="min-h-screen  bg-gradient-to-b from-gray-50 container relative pt-20 pb-24 md:pt-32 md:pb-40 to-gray-100">
+      <div className="min-h-screen  bg-gradient-to-b from-gray-50 container relative top-24 pt-20 pb-24 md:pt-32 md:pb-40 to-gray-100">
         {/* Background Image */}
         <div
           className="fixed inset-0 opacity-50 z-0"
@@ -181,16 +181,20 @@ const ContactPage = () => {
                 {" "}
                 Corporate Office Address:
               </h3>
-              <p className="text-gray-600">123 Business Street, Suite 500</p>
-              <p className="text-gray-600">New York, NY 10001, USA</p>
-              <h3 className="text-xl font-semibold my-4 text-primary-900">
+              
+              <p className="text-gray-600">Genoviq Healthcare Private Limited</p>
+              <p className="text-gray-600">Plot No.64, Room 1 & 2,
+                    Kamlabad, Badauli, Behind Seva Hospital</p>
+              <p className="text-gray-600">Tahsil- BKT,
+              Lucknow, Uttar Pradesh, India - 226201</p>
+              {/* <h3 className="text-xl font-semibold my-4 text-primary-900">
                 {" "}
                 Registered Office Address:
               </h3>
               <p className="text-gray-600">123 Business Street, Suite 500</p>
-              <p className="text-gray-600">New York, NY 10001, USA</p>
+              <p className="text-gray-600">New York, NY 10001, USA</p> */}
 
-              <div className="mt-4">
+              <div className="mt-12">
                 <p className="flex items-center gap-2 text-gray-700">
                   <Phone className="w-5 h-5 text-[#1a237e]" /> +1 (555) 123-4567
                 </p>

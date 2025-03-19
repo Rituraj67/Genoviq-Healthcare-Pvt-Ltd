@@ -45,9 +45,9 @@ const Career = () => {
   return (
     <>
       <Helmet>
-        <title>Careers - Genoviq Group of Companies</title>
+        <title>Careers - Genoviq Healthcare</title>
       </Helmet>
-      <div className="min-h-screen top-20 relative">
+      <div className="min-h-screen top-24 relative">
         {/* Hero Section */}
         <section className="relative h-screen overflow-hidden">
           <div

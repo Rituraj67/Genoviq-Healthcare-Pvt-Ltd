@@ -1,10 +1,11 @@
 import { motion } from "framer-motion"
-import { ArrowRight, SquareActivity, FlaskRoundIcon as Flask, ShieldPlus, HeartPulse } from "lucide-react"
+import { ArrowRight, SquareActivity, FlaskRoundIcon as Flask,Landmark, ShieldPlus, HeartPulse } from "lucide-react"
 import { Link } from "react-router-dom"
+
 
 const iconMap = {
   healthcare: SquareActivity,
-  ivd: Flask,
+  institutions: Landmark,
   oncology: ShieldPlus,
   pharma: HeartPulse,
 }

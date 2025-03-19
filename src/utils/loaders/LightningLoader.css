@@ -1,0 +1,210 @@
+/* Translucent full-screen background */
+.lightning-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0.9) 100%),
+                linear-gradient(120deg, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: overlayGlow 10s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(6px);
+  }
+  
+  
+  /* Loader Container */
+  .lightning-loader-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: colorCycle 4s infinite ease-in-out;
+    color: #FF566B; /* fallback */
+  }
+  
+  /* Lightning Bolt */
+  .lightning-bolt {
+    position: relative;
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  .lightning-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 12px currentColor);
+    color: currentColor;
+  }
+  
+  /* Glow */
+  .lightning-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, currentColor 0%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0;
+    animation: glow 1.5s infinite ease-in-out;
+  }
+  
+  /* Circle around bolt */
+  .lightning-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid currentColor;
+    opacity: 0.3;
+    animation: expand 2s infinite ease-out;
+  }
+  
+  
+  /* Particles */
+  .lightning-particles {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: currentColor;
+    border-radius: 50%;
+    opacity: 0;
+    animation: particle-move 2s infinite ease-out;
+  }
+
+  /* This class will be added when hiding the loader */
+/* Overlay cool exit animation */
+.loader-exit {
+    animation: exitOverlay 0.7s forwards ease-in-out;
+  }
+  
+  @keyframes exitOverlay {
+    0% {
+      opacity: 1;
+      backdrop-filter: blur(0px);
+    }
+    50% {
+      opacity: 0.5;
+      backdrop-filter: blur(4px);
+    }
+    100% {
+      opacity: 0;
+      backdrop-filter: blur(10px);
+    }
+  }
+  
+  /* Bolt exit animation */
+  .bolt-exit {
+    animation: exitBolt 0.6s forwards ease-in-out;
+  }
+  
+  @keyframes exitBolt {
+    0% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.3) rotate(-60deg);
+      opacity: 0;
+    }
+  }
+  
+  /* Circle exit animation */
+  .circle-exit {
+    animation: exitCircle 0.6s forwards ease-in-out;
+  }
+  
+  @keyframes exitCircle {
+    0% {
+      opacity: 0.4;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.8);
+    }
+  }
+  
+  
+  /* Particles fade out */
+  .particle-exit {
+    animation: fadeParticles 0.6s forwards ease-in;
+  }
+  
+  @keyframes fadeParticles {
+    0% {
+      opacity: 1;
+      transform: scale(1) translate(0, 0);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.3) translate(0, 0); /* keep translation same */
+    }
+  }
+  
+
+  
+  .particle:nth-child(1) { top: 20%; left: 20%; transform: translate(-50%, -50%); }
+  .particle:nth-child(2) { top: 20%; right: 20%; transform: translate(50%, -50%); }
+  .particle:nth-child(3) { bottom: 20%; left: 20%; transform: translate(-50%, 50%); }
+  .particle:nth-child(4) { bottom: 20%; right: 20%; transform: translate(50%, 50%); }
+  .particle:nth-child(5) { top: 50%; left: 10%; transform: translate(-50%, -50%); }
+  .particle:nth-child(6) { top: 50%; right: 10%; transform: translate(50%, -50%); }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.1); }
+  }
+  
+  @keyframes glow {
+    0%, 100% { opacity: 0; transform: scale(0.8); }
+    50%      { opacity: 0.5; transform: scale(1.2); }
+  }
+  
+  @keyframes expand {
+    0%   { transform: translate(-50%, -50%) scale(0.8); opacity: 0.6; }
+    100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+  }
+  
+  @keyframes particle-move {
+    0%   { transform: translate(0, 0); opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 0.5; }
+    100% {
+      transform: translate(calc(cos(var(--angle, 0deg)) * 40px), calc(sin(var(--angle, 0deg)) * 40px));
+      opacity: 0;
+    }
+  }
+  
+  /* Multicolor animation */
+  @keyframes colorCycle {
+    0%   { color: #4D94FF; }    /* Reddish */
+    20%  { color: #004AAD; }    /* Darker Red */
+    40%  { color: #004299; }    /* Yellow */
+    60%  { color: #003A85; }    /* Green */
+    80%  { color: #003270; }    /* Blue */
+    100% { color: #002A5C; }    /* Back to Reddish */
+  }
+  
+
+  @keyframes overlayGlow {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
