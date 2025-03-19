@@ -45,7 +45,7 @@ const AboutPage = () => {
     {
       icon: <Users className="w-8 h-8" />,
       title: "Employees",
-      value: "40+",
+      value: "50+",
       delay: 0.4,
     },
     {
@@ -170,18 +170,20 @@ const AboutPage = () => {
                 className="space-y-6"
               >
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  At Genoviq Healthcare, we are pioneering the future of
-                  pharmaceutical excellence. With over eight decades of
-                  unwavering commitment to healthcare innovation, we have
-                  established ourselves as a global leader in developing and
-                  delivering life-changing medical solutions.
+                  At Genoviq Healthcare, we specialize in driving pharmaceutical
+                  growth through strategic marketing excellence. With decades of
+                  experience in the healthcare domain, we have established
+                  ourselves as a trusted partner for pharmaceutical brands
+                  looking to expand their reach and impact.
                 </p>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  Our state-of-the-art research facilities and dedicated team of
-                  experts work tirelessly to discover breakthrough treatments
-                  that address the world's most pressing health challenges. We
-                  believe in making quality healthcare accessible to all,
-                  driving positive change in communities worldwide.
+                <p className="text-lg text-gray-700 leading-relaxed mt-4">
+                  Our team of experts crafts innovative marketing solutions,
+                  builds strong brand identities, and ensures effective
+                  communication between pharmaceutical companies, healthcare
+                  professionals, and patients. At Genoviq, we are committed to
+                  making quality healthcare more visible, accessible, and
+                  impactful through tailored marketing strategies and deep
+                  industry insights.
                 </p>
 
                 {/* Animated stats */}
@@ -804,7 +806,6 @@ const Quality = () => {
         "Adherence to national and state-level regulatory standards and documentation",
     },
   ];
-  
 
   return (
     <section className="py-20 bg-gradient-to-b from-[#1a237e] to-[#8e1c1c] text-white">

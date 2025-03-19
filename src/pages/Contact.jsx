@@ -4,21 +4,49 @@ import { MapPin, Mail, Phone, MapPinHouse } from "lucide-react";
 import contactbg from "../assets/ContactBG.png";
 import GoogleMapPreview from "../components/GoogleMapPreview";
 import { Helmet } from "react-helmet-async";
-
+import axios from "axios";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: "",
-    organization: "",
     email: "",
     phone: "",
     subject: "",
     message: "",
   });
 
-  const handleSubmit = (e) => {
+  const [showModal, setShowModal] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+
+    try {
+      setIsSubmitting(true);
+      const res = await axios.post(
+        `${import.meta.env.VITE_BASE_ADDRESS}/contact/send-query`,
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(res);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+      setShowModal(true);
+      setTimeout(() => {
+        setShowModal(false);
+      }, 3000); // Hide after 3 seconds
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -30,9 +58,9 @@ const ContactPage = () => {
 
   return (
     <>
-    <Helmet>
-      <title>Contact - Genoviq Healthcare</title>
-    </Helmet>
+      <Helmet>
+        <title>Contact - Genoviq Healthcare</title>
+      </Helmet>
       <div className="min-h-screen  bg-gradient-to-b from-gray-50 container relative top-24 pt-20 pb-24 md:pt-32 md:pb-40 to-gray-100">
         {/* Background Image */}
         <div
@@ -81,18 +109,6 @@ const ContactPage = () => {
                     className="mt-1 block w-full rounded-b-xl border-b border-x border-gray-300 shadow-md focus:border-[#1a237e] focus:ring-[#1a237e]"
                   />
                 </div>
-                <div>
-                  <label className="block pl-1 text-sm font-medium text-gray-700">
-                    Organization
-                  </label>
-                  <input
-                    type="text"
-                    name="organization"
-                    value={formData.organization}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border-b border-x rounded-b-xl border-gray-300 shadow-md focus:border-[#1a237e] focus:ring-[#1a237e]"
-                  />
-                </div>
               </div>
 
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -135,10 +151,10 @@ const ContactPage = () => {
                   className="mt-1 text-sm py-2 px-2 block w-full border-b border-x rounded-b-xl border-gray-300 shadow-md focus:border-[#1a237e] focus:ring-[#1a237e]"
                 >
                   <option value="">Select Subject</option>
-                  <option value="general">General Inquiry</option>
-                  <option value="support">Technical Support</option>
-                  <option value="partnership">Partnership</option>
-                  <option value="other">Other</option>
+                  <option value="General Inquiry">General Inquiry</option>
+                  <option value="Technical Support">Technical Support</option>
+                  <option value="Partnership">Partnership</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
 
@@ -157,12 +173,18 @@ const ContactPage = () => {
               </div>
 
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
                 type="submit"
-                className="w-full bg-[#1a237e] text-white py-2 px-4 rounded-b-xl hover:bg-[#8e1c1c] transition-colors duration-300"
+                disabled={isSubmitting}
+                className={`w-full py-2 px-4 rounded-b-xl transition-colors duration-300
+    ${
+      isSubmitting
+        ? "bg-gray-400 cursor-not-allowed"
+        : "bg-[#1a237e] hover:bg-[#8e1c1c] text-white"
+    }`}
               >
-                Submit
+                {isSubmitting ? "Submitting..." : "Submit"}
               </motion.button>
             </form>
           </motion.div>
@@ -181,12 +203,16 @@ const ContactPage = () => {
                 {" "}
                 Corporate Office Address:
               </h3>
-              
-              <p className="text-gray-600">Genoviq Healthcare Private Limited</p>
-              <p className="text-gray-600">Plot No.64, Room 1 & 2,
-                    Kamlabad, Badauli, Behind Seva Hospital</p>
-              <p className="text-gray-600">Tahsil- BKT,
-              Lucknow, Uttar Pradesh, India - 226201</p>
+
+              <p className="text-gray-600">
+                Genoviq Healthcare Private Limited
+              </p>
+              <p className="text-gray-600">
+                Plot No.64, Room 1 & 2, Kamlabad, Badauli, Behind Seva Hospital
+              </p>
+              <p className="text-gray-600">
+                Tahsil- BKT, Lucknow, Uttar Pradesh, India - 226201
+              </p>
               {/* <h3 className="text-xl font-semibold my-4 text-primary-900">
                 {" "}
                 Registered Office Address:
@@ -196,11 +222,11 @@ const ContactPage = () => {
 
               <div className="mt-12">
                 <p className="flex items-center gap-2 text-gray-700">
-                  <Phone className="w-5 h-5 text-[#1a237e]" /> +1 (555) 123-4567
+                  <Phone className="w-5 h-5 text-[#1a237e]" /> +91 9919248944
                 </p>
                 <p className="flex items-center gap-2 text-gray-700">
                   <Mail className="w-5 h-5 text-[#8e1c1c]" />{" "}
-                  contact@company.com
+                  contact@genoviqhealthcare.com
                 </p>
                 <p className="flex items-center gap-2 text-gray-700">
                   <MapPin className="w-5 h-5 text-[#1a237e]" /> Visit us today!
@@ -218,8 +244,64 @@ const ContactPage = () => {
           </motion.div>
         </div>
       </div>
+      <PopUp showModal={showModal} />
     </>
   );
 };
 
 export default ContactPage;
+
+const PopUp = ({ showModal }) => {
+  return (
+    <>
+      {showModal && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className="bg-white rounded-2xl p-8 flex flex-col items-center justify-center shadow-2xl"
+          >
+            {/* Circle with checkmark */}
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-lg border-4 border-[#1a237e]"
+            >
+              <motion.svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#1a237e"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="checkmark"
+              >
+                <motion.path
+                  d="M4 12l5 5L20 7"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                />
+              </motion.svg>
+            </motion.div>
+
+            {/* Message */}
+            <p className="text-center text-lg font-semibold text-[#1a237e] mt-4">
+              Query Submitted Successfully!
+            </p>
+          </motion.div>
+        </motion.div>
+      )}
+    </>
+  );
+};

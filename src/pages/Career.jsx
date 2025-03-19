@@ -123,10 +123,10 @@ const Career = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {[
                 {
-                  icon: Globe,
-                  title: "Global Impact",
+                  icon: Briefcase,
+                  title: "Career Growth",
                   description:
-                    "Make a difference in healthcare across the world",
+                    "Opportunities to grow within a dynamic and evolving industry",
                 },
                 {
                   icon: GraduationCap,
@@ -196,7 +196,7 @@ const Career = () => {
                 { value: "4.8/5", label: "Employee Satisfaction" },
                 { value: "92%", label: "Retention Rate" },
 
-                { value: "7+", label: "States" },
+                { value: "10+", label: "States" },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
