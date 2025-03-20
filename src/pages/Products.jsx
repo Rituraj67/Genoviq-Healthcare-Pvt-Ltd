@@ -41,7 +41,9 @@ const medicineTypes = [
   "Patch",
   "Drop",
   "Gel",
-]
+  "Mouthwash", // ✅ Added
+];
+
 
 const Products = () => {
   const [selectedDivision, setSelectedDivision] = useState("All")

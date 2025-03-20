@@ -1,12 +1,27 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Info, X } from "lucide-react";
+import CompositionTooltip from "./CompositionTooltip";
 
 const ProductCard = ({ product, index }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const modalRef = useRef();
+
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") {
+        setShowDetails(false);
+      }
+    };
+
+    if (showDetails) {
+      document.addEventListener("keydown", handleEsc);
+    }
+
+    return () => document.removeEventListener("keydown", handleEsc);
+  }, [showDetails]);
 
   // Auto-rotate images
   useEffect(() => {
@@ -136,7 +151,7 @@ const ProductCard = ({ product, index }) => {
               {product.name}
             </h3>
             {product.type && (
-              <span className="px-3 py-1 text-xs rounded-full bg-blue-100 text-blue-600 font-semibold">
+              <span className="px-3 py-1 text-xs rounded-full bg-primary-100 text-primary-600 font-semibold">
                 {product.type}
               </span>
             )}
@@ -144,19 +159,12 @@ const ProductCard = ({ product, index }) => {
 
           <div className="space-y-2 flex-grow text-sm">
             <div className="flex gap-2">
-              <span className="text-gray-500 font-medium w-24">MRP:</span>
-              <span className="text-primary-600 font-semibold">
-                ₹ {product.mrp}
-              </span>
-            </div>
-
-            <div className="flex gap-2">
               <span className="text-gray-500 font-medium w-24">
                 Composition:
               </span>
-              <span className="text-green-800  px-2 py-0.5 rounded-md">
-                {product.composition}
-              </span>
+             
+              <CompositionTooltip composition={product.composition}/>
+             
             </div>
 
             <div className="flex gap-2">
