@@ -12,6 +12,7 @@ export const AppDataProvider = ({ children }) => {
   const [milestones, setMilestones] = useState([]);
   const [news, setNews] = useState([]);
   const [awards, setAwards] = useState([]);
+  const [jobs, setjobs] = useState([])
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -25,6 +26,7 @@ export const AppDataProvider = ({ children }) => {
           milestonesRes,
           newsRes,
           awardsRes,
+          jobsRes
         ] = await Promise.all([
           axios.get(`${import.meta.env.VITE_BASE_ADDRESS}/products/`, {
             withCredentials: true,
@@ -44,16 +46,12 @@ export const AppDataProvider = ({ children }) => {
           axios.get(`${import.meta.env.VITE_BASE_ADDRESS}/award/`, {
             withCredentials: true,
           }),
+          axios.get(`${import.meta.env.VITE_BASE_ADDRESS}/jobs/`, {
+            withCredentials: true,
+          }),
         ]);
 
-        console.log(
-          productsRes,
-          testimonialsRes,
-          directorsRes,
-          milestonesRes,
-          newsRes,
-          awardsRes
-        );
+
 
         setProducts(productsRes.data);
         setTestimonials(testimonialsRes.data);
@@ -61,6 +59,7 @@ export const AppDataProvider = ({ children }) => {
         setMilestones(milestonesRes.data);
         setNews(newsRes.data);
         setAwards(awardsRes.data);
+        setjobs(jobsRes.data)
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -80,6 +79,7 @@ export const AppDataProvider = ({ children }) => {
         milestones,
         news,
         awards,
+        jobs,
         isLoading,
       }}
     >

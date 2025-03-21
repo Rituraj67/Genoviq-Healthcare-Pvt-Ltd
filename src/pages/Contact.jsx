@@ -30,7 +30,7 @@ const ContactPage = () => {
           withCredentials: true,
         }
       );
-      console.log(res);
+      
       setFormData({
         name: "",
         email: "",

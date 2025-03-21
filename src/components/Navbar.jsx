@@ -20,11 +20,11 @@ function Navbar() {
   useEffect(() => {
     // Get the current path from the URL
     const currentPath = "/"+ window.location.pathname.split("/")[1];
-    console.log(currentPath);
+   
     
     // Find the matching nav item
     const matchingItem = navItems.find((item) => currentPath == item.href);
-    console.log(matchingItem);
+    
     // Update the active state if a match is found
     if (matchingItem) {
       setActiveItem(matchingItem.name);

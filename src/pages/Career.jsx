@@ -5,42 +5,33 @@ import {
   Globe,
   Heart,
   Building2,
+  FileClock,
 } from "lucide-react";
-import { useState } from "react";
+
+import React, { useState } from "react";
 import banner from "../assets/CareerBG1.webp";
 import { Helmet } from "react-helmet-async";
+import { useAppData } from "../context/AppDataContext";
+import JobCard from "../components/JobCard";
 
 const Career = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const jobCategories = ["All", "Marketing", "Sales", "Research", "Management"];
-
-  const jobs = [
-    {
-      title: "Senior Marketing Manager",
-      department: "Marketing",
-      location: "New York",
-      type: "Full-time",
-    },
-    {
-      title: "Product Manager",
-      department: "Management",
-      location: "London",
-      type: "Full-time",
-    },
-    {
-      title: "Sales Representative",
-      department: "Sales",
-      location: "Singapore",
-      type: "Full-time",
-    },
-    {
-      title: "Market Research Analyst",
-      department: "Research",
-      location: "Mumbai",
-      type: "Full-time",
-    },
+  const jobCategories = [
+    "All",
+    "Sales",
+    "Marketing",
+    "Management",
+    "Business Development",
+    "Supply Chain & Logistics",
+    "Finance & Accounting",
+    "Human Resources (HR)",
+    "IT & Technical Support",
+    "Administrative Support",
+    "Training & Medical Education",
   ];
+  const { jobs } = useAppData();
+  console.log(jobs);
 
   return (
     <>
@@ -252,54 +243,28 @@ const Career = () => {
             </div>
 
             {/* Job Listings */}
-            <div className="grid gap-6 max-w-4xl mx-auto">
-              {jobs
-                .filter(
-                  (job) =>
-                    activeCategory === "All" ||
-                    job.department === activeCategory
-                )
-                .map((job, index) => (
-                  <motion.div
-                    key={job.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.02 }}
-                    className="bg-white rounded-lg shadow-lg p-6 border border-gray-100"
-                  >
-                    <div className=" flex-col xs:flex-row  flex gap-2   xs:justify-between items-start">
-                      <div>
-                        <h3 className="text-xl font-semibold text-[#1a237e] mb-2">
-                          {job.title}
-                        </h3>
-                        <div className="flex gap-4 text-gray-600">
-                          <span className="flex items-center gap-1">
-                            <Building2 className="w-4 h-4" />
-                            {job.department}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Globe className="w-4 h-4" />
-                            {job.location}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Briefcase className="w-4 h-4" />
-                            {job.type}
-                          </span>
-                        </div>
-                      </div>
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-[#1a237e] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-[#8e1c1c] transition-colors duration-300"
-                      >
-                        Apply Now
-                      </motion.button>
-                    </div>
-                  </motion.div>
-                ))}
-            </div>
+            {jobs.length==0?<NoOpeningsMessage/> :<div className="grid gap-6 max-w-4xl mx-auto">
+              {jobs.filter(
+                (job) =>
+                  activeCategory === "All" || job.department === activeCategory
+              ).length > 0 ? (
+                jobs
+                  .filter(
+                    (job) =>
+                      activeCategory === "All" ||
+                      job.department === activeCategory
+                  )
+                  .map((job, index) => <JobCard key={index} job={job} />)
+              ) : (
+                <div className="w-full max-w-2xl mx-auto my-12 p-6 bg-white shadow-lg rounded-2xl text-center border border-gray-200">
+                <div className="text-primary-900">
+                We're not hiring at the moment for this perticular profile, but we're always looking for
+          passionate professionals eager to make an impact in healthcare and
+          pharma.
+                </div>
+                </div>
+              )}
+            </div>}
           </div>
         </section>
       </div>
@@ -308,3 +273,35 @@ const Career = () => {
 };
 
 export default Career;
+
+
+const NoOpeningsMessage = () => {
+  return (
+    <div className="w-full max-w-2xl mx-auto my-12 p-6 bg-white shadow-lg rounded-2xl text-center border border-gray-200">
+      <div className="flex flex-col items-center space-y-4">
+        <FileClock className="w-12 h-12 text-gray-500" />
+        <h2 className="text-2xl font-semibold text-gray-800">
+          No Current Openings
+        </h2>
+        <p className="text-gray-600">
+          We're not hiring at the moment, but we're always looking for
+          passionate professionals eager to make an impact in healthcare and
+          pharma.
+        </p>
+        <p className="text-gray-600">
+          🚀 Stay tuned — exciting opportunities are just around the corner.
+        </p>
+        <p className="text-gray-600">
+          💌 Drop your resume at{" "}
+          <a
+            href="mailto:careers@genoviq.com"
+            className="text-blue-600 hover:underline font-medium"
+          >
+            careers@genoviqhealthcare.com
+          </a>{" "}
+          to stay on our radar.
+        </p>
+      </div>
+    </div>
+  );
+};

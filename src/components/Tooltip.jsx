@@ -1,10 +1,11 @@
 import { useRef, useEffect, useState } from "react";
 
-export default function CompositionTooltip({ composition }) {
+export default function Tooltip({ content }) {
   const textRef = useRef(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
+  
   useEffect(() => {
     const el = textRef.current;
     if (el) {
@@ -13,7 +14,8 @@ export default function CompositionTooltip({ composition }) {
       const maxHeight = lineHeight * maxLines;
       setIsOverflowing(el.scrollHeight > maxHeight);
     }
-  }, [composition]);
+  }, [content]);
+
 
   return (
     <div
@@ -24,14 +26,19 @@ export default function CompositionTooltip({ composition }) {
       <span
         ref={textRef}
         className="text-green-800 px-2 py-0.5 rounded-md break-words line-clamp-3"
-        style={{ display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}
+        style={{
+          display: "-webkit-box",
+          WebkitLineClamp: 3,
+          WebkitBoxOrient: "vertical",
+          overflow: "hidden",
+        }}
       >
-        {composition}
+        {content}
       </span>
 
       {isOverflowing && isHovered && (
         <div className="absolute z-10 bg-gray-800 right-0 text-white text-sm rounded-md px-2 py-1 mt-1 w-64">
-          {composition}
+          {content}
         </div>
       )}
     </div>
