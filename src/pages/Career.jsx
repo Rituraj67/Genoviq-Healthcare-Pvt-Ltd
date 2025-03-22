@@ -31,7 +31,7 @@ const Career = () => {
     "Training & Medical Education",
   ];
   const { jobs } = useAppData();
-  console.log(jobs);
+  
 
   return (
     <>

@@ -1,121 +1,153 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import axios from "axios";
 
-export default function JobApplication({ isOpen, onClose, jobTitle }) {
+export default function JobApplication({ isOpen, onClose, jobTitle, jobId }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     introduction: "",
     resume: null,
-  })
-  const [formErrors, setFormErrors] = useState({})
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [fileName, setFileName] = useState("")
-  const fileInputRef = useRef(null)
+  });
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [fileName, setFileName] = useState("");
+  const fileInputRef = useRef(null);
 
   // Handle form input changes
   const handleChange = (e) => {
-    const { name, value } = e.target
+    if(formErrors?.other){
+      setFormErrors({...formErrors, other:""})
+    }
+    const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
-    })
+    });
 
     // Clear error when field is edited
     if (formErrors[name]) {
       setFormErrors({
         ...formErrors,
         [name]: "",
-      })
+      });
     }
-  }
+  };
 
   // Handle file upload
   const handleFileChange = (e) => {
-    const file = e.target.files[0]
+    if(formErrors?.other){
+      setFormErrors({...formErrors, other:""})
+    }
+    const file = e.target.files[0];
     if (file) {
       if (file.type !== "application/pdf") {
         setFormErrors({
           ...formErrors,
           resume: "Please upload a PDF file",
-        })
-        setFileName("")
+        });
+        setFileName("");
         setFormData({
           ...formData,
           resume: null,
-        })
-        return
+        });
+        return;
       }
 
       setFormData({
         ...formData,
         resume: file,
-      })
-      setFileName(file.name)
+      });
+      setFileName(file.name);
 
       // Clear error if there was one
       if (formErrors.resume) {
         setFormErrors({
           ...formErrors,
           resume: "",
-        })
+        });
       }
     }
-  }
+  };
 
   // Validate form
   const validateForm = () => {
-    const errors = {}
+    const errors = {};
 
-    if (!formData.name.trim()) errors.name = "Name is required"
+    if (!formData.name.trim()) errors.name = "Name is required";
 
     if (!formData.email.trim()) {
-      errors.email = "Email is required"
+      errors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Email is invalid"
+      errors.email = "Email is invalid";
     }
 
     if (!formData.phone.trim()) {
-      errors.phone = "Phone number is required"
+      errors.phone = "Phone number is required";
     } else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ""))) {
-      errors.phone = "Please enter a valid 10-digit phone number"
+      errors.phone = "Please enter a valid 10-digit phone number";
     }
 
-    if (!formData.introduction.trim()) errors.introduction = "Please introduce yourself"
+    if (!formData.introduction.trim())
+      errors.introduction = "Please introduce yourself";
 
-    if (!formData.resume) errors.resume = "Please upload your resume"
+    if (!formData.resume) errors.resume = "Please upload your resume";
 
-    return errors
-  }
+    return errors;
+  };
 
   // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const errors = validateForm()
+    const errors = validateForm();
     if (Object.keys(errors).length > 0) {
-      setFormErrors(errors)
-      return
+      setFormErrors(errors);
+      return;
     }
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
 
-      // Auto close after 3 seconds
+    let application = new FormData();
+    application.append("name", formData.name);
+    application.append("email", formData.email);
+    application.append("phone", formData.phone);
+    application.append("introduction", formData.introduction);
+    application.append("resume", formData.resume);
+
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_BASE_ADDRESS}/jobs/${jobId}`, application,
+        {
+          withCredentials: true,
+        }
+      );
       setTimeout(() => {
-        handleReset()
-        onClose()
-      }, 3000)
-    }, 1500)
-  }
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+
+        // Auto close after 3 seconds
+        setTimeout(() => {
+          handleReset();
+          onClose();
+        }, 3000);
+      }, 1500);
+    } catch (error) {
+      if(error.status== 409){
+        setFormErrors({...formErrors, "other": error.response.data.message})
+      }else{
+        setFormErrors({...formErrors, "other": "Some error occured! Try again later."})
+      }
+      console.error(error)
+      setIsSubmitting(false)
+    }
+  };
 
   // Reset form state
   const handleReset = () => {
@@ -125,49 +157,53 @@ export default function JobApplication({ isOpen, onClose, jobTitle }) {
       phone: "",
       introduction: "",
       resume: null,
-    })
-    setFileName("")
-    setFormErrors({})
-    setIsSubmitted(false)
-  }
+    });
+    setFileName("");
+    setFormErrors({});
+    setIsSubmitted(false);
+  };
 
   // Close modal handler
   const handleClose = () => {
     if (!isSubmitting) {
-      handleReset()
-      onClose()
+      handleReset();
+      onClose();
     }
-  }
+  };
 
   // Handle click outside to close
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (isOpen && !isSubmitting && e.target.classList.contains("modal-overlay")) {
-        handleClose()
+      if (
+        isOpen &&
+        !isSubmitting &&
+        e.target.classList.contains("modal-overlay")
+      ) {
+        handleClose();
       }
-    }
+    };
 
-    document.addEventListener("mousedown", handleClickOutside)
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [isOpen, isSubmitting])
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, isSubmitting]);
 
   // Handle escape key to close
   useEffect(() => {
     const handleEscKey = (e) => {
       if (isOpen && !isSubmitting && e.key === "Escape") {
-        handleClose()
+        handleClose();
       }
-    }
+    };
 
-    document.addEventListener("keydown", handleEscKey)
+    document.addEventListener("keydown", handleEscKey);
     return () => {
-      document.removeEventListener("keydown", handleEscKey)
-    }
-  }, [isOpen, isSubmitting])
+      document.removeEventListener("keydown", handleEscKey);
+    };
+  }, [isOpen, isSubmitting]);
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center modal-overlay bg-black bg-opacity-50 p-4">
@@ -180,9 +216,14 @@ export default function JobApplication({ isOpen, onClose, jobTitle }) {
       >
         <div className="p-4 sm:p-6 overflow-y-auto flex-grow">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg sm:text-xl font-bold">Apply for {jobTitle}</h2>
+            <h2 className="text-lg sm:text-xl font-bold">
+              Apply for {jobTitle}
+            </h2>
             {!isSubmitting && (
-              <button onClick={handleClose} className="text-gray-500 hover:text-gray-700">
+              <button
+                onClick={handleClose}
+                className="text-gray-500 hover:text-gray-700"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -190,7 +231,12 @@ export default function JobApplication({ isOpen, onClose, jobTitle }) {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
             )}
@@ -225,7 +271,12 @@ export default function JobApplication({ isOpen, onClose, jobTitle }) {
                     animate={{ pathLength: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                   >
-                    <motion.path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    <motion.path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={3}
+                      d="M5 13l4 4L19 7"
+                    />
                   </motion.svg>
                 </motion.div>
                 <motion.h3
@@ -242,7 +293,8 @@ export default function JobApplication({ isOpen, onClose, jobTitle }) {
                   transition={{ delay: 0.6 }}
                   className="text-gray-600 text-center text-sm sm:text-base"
                 >
-                  Thank you for your application. We'll review it and get back to you soon.
+                  Thank you for your application. We'll review it and get back
+                  to you soon.
                 </motion.p>
               </motion.div>
             ) : (
@@ -255,7 +307,10 @@ export default function JobApplication({ isOpen, onClose, jobTitle }) {
                 className="space-y-3 sm:space-y-4"
               >
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Full Name *
                   </label>
                   <input
@@ -269,11 +324,18 @@ export default function JobApplication({ isOpen, onClose, jobTitle }) {
                     }`}
                     disabled={isSubmitting}
                   />
-                  {formErrors.name && <p className="mt-1 text-xs sm:text-sm text-red-500">{formErrors.name}</p>}
+                  {formErrors.name && (
+                    <p className="mt-1 text-xs sm:text-sm text-red-500">
+                      {formErrors.name}
+                    </p>
+                  )}
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Email Address *
                   </label>
                   <input
@@ -287,11 +349,18 @@ export default function JobApplication({ isOpen, onClose, jobTitle }) {
                     }`}
                     disabled={isSubmitting}
                   />
-                  {formErrors.email && <p className="mt-1 text-xs sm:text-sm text-red-500">{formErrors.email}</p>}
+                  {formErrors.email && (
+                    <p className="mt-1 text-xs sm:text-sm text-red-500">
+                      {formErrors.email}
+                    </p>
+                  )}
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Phone Number *
                   </label>
                   <input
@@ -305,11 +374,18 @@ export default function JobApplication({ isOpen, onClose, jobTitle }) {
                     }`}
                     disabled={isSubmitting}
                   />
-                  {formErrors.phone && <p className="mt-1 text-xs sm:text-sm text-red-500">{formErrors.phone}</p>}
+                  {formErrors.phone && (
+                    <p className="mt-1 text-xs sm:text-sm text-red-500">
+                      {formErrors.phone}
+                    </p>
+                  )}
                 </div>
 
                 <div>
-                  <label htmlFor="introduction" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="introduction"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Brief Introduction *
                   </label>
                   <textarea
@@ -319,18 +395,24 @@ export default function JobApplication({ isOpen, onClose, jobTitle }) {
                     value={formData.introduction}
                     onChange={handleChange}
                     className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-sm sm:text-base ${
-                      formErrors.introduction ? "border-red-500" : "border-gray-300"
+                      formErrors.introduction
+                        ? "border-red-500"
+                        : "border-gray-300"
                     }`}
                     placeholder="Tell us a bit about yourself and why you're interested in this position..."
                     disabled={isSubmitting}
                   ></textarea>
                   {formErrors.introduction && (
-                    <p className="mt-1 text-xs sm:text-sm text-red-500">{formErrors.introduction}</p>
+                    <p className="mt-1 text-xs sm:text-sm text-red-500">
+                      {formErrors.introduction}
+                    </p>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Resume (PDF only) *</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Resume (PDF only) *
+                  </label>
                   <div className="flex items-center">
                     <input
                       type="file"
@@ -354,8 +436,14 @@ export default function JobApplication({ isOpen, onClose, jobTitle }) {
                       {fileName || "No file chosen"}
                     </span>
                   </div>
-                  {formErrors.resume && <p className="mt-1 text-xs sm:text-sm text-red-500">{formErrors.resume}</p>}
+                  {formErrors.resume && (
+                    <p className="mt-1 text-xs sm:text-sm text-red-500">
+                      {formErrors.resume}
+                    </p>
+                  )}
                 </div>
+
+                <div className=" text-xs text-red-700 ">{formErrors.other}</div>
 
                 <div className="pt-2">
                   <motion.button
@@ -400,6 +488,5 @@ export default function JobApplication({ isOpen, onClose, jobTitle }) {
         </div>
       </motion.div>
     </div>
-  )
+  );
 }
-

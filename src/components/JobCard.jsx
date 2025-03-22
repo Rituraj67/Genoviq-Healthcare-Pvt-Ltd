@@ -135,7 +135,7 @@ export default function JobCard({ job }) {
       </motion.div>
 
       {/* Job Application Modal */}
-      <JobApplication isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} jobTitle={job.title} />
+      <JobApplication isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} jobTitle={job.title} jobId={job.id} />
     </>
   )
 }
