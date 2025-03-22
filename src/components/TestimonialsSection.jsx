@@ -1,11 +1,16 @@
+"use client"
+
 import { motion } from "framer-motion"
 import TestimonialCarousel from "./TestimonialCarousel"
+import { useAppData } from "../context/AppDataContext"
+
 import img from "../assets/TestimonialBG.webp"
 
 const TestimonialsSection = () => {
+  const {testimonials}= useAppData()
   return (
     <section className="relative py-20 overflow-hidden">
-      {/* Background Image with Parallax Effect */}
+      {/* Background with Parallax Effect */}
       <div className="absolute inset-0 z-0">
         <motion.div
           initial={{ scale: 1.1 }}
@@ -26,9 +31,8 @@ const TestimonialsSection = () => {
           />
         </motion.div>
       </div>
-
       {/* Content */}
-      <div className="container mx-auto relative z-10">
+      <div className="container mx-auto relative z-10 px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,11 +42,11 @@ const TestimonialsSection = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Life at Genoviq</h2>
           <p className="text-xl text-gray-200 max-w-2xl mx-auto">
-            Join our team of passionate professionals dedicated to advancing healthcare through innovation
+          Be a part of a passionate team driving healthcare forward through strategic outreach and meaningful collaboration.
           </p>
         </motion.div>
 
-        <TestimonialCarousel />
+        <TestimonialCarousel testimonials={testimonials} />
 
         {/* Decorative Elements */}
         <motion.div
