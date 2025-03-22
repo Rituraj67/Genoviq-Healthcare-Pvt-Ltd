@@ -102,9 +102,7 @@ function Home() {
                 for a Healthier Tomorrow.
               </h1>
               <p className="text-lg font-serif md:text-xl text-gray-700 max-w-2xl">
-                Delivering breakthrough medicines and transforming millions of
-                lives through cutting-edge pharmaceutical research and
-                development.
+              "Delivering quality medicines and transforming millions of lives through strategic marketing and trusted healthcare partnerships.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <Link to="/products" className="btn-primary">
