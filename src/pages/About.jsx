@@ -391,9 +391,9 @@ const AboutPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {[
-                { title: "Founder (1898-1972)", name: "Dr. K.A. Hamied" },
-                { title: "Chairman", name: "Dr. Y.K. Hamied" },
-                { title: "Vice-Chairman", name: "Mr. M.K. Hamied" },
+                { title: "National Sales Head", name: "Mr. Anand Singh", url:"https://res.cloudinary.com/df5mjcfzc/image/upload/v1742671391/Genoviq_1742671391503_jpm2gr.jpg" },
+                { title: "Director", name: "Mrs. Saumya Singh", url:"https://res.cloudinary.com/df5mjcfzc/image/upload/v1742671309/Genoviq_1742671309011_odtwj9.jpg" },
+                { title: "Vice-President", name: "Mr. Brijesh Prasad", url:"https://res.cloudinary.com/df5mjcfzc/image/upload/v1742671528/Genoviq_1742671528389_omh8ca.jpg" },
               ].map((leader, index) => (
                 <motion.div
                   key={leader.title}
@@ -404,7 +404,9 @@ const AboutPage = () => {
                   whileHover={{ scale: 1.05 }}
                   className="bg-white rounded-lg shadow-lg p-8 text-center transform transition-all duration-300"
                 >
-                  <div className="w-24 h-24 rounded-full bg-gray-200 mx-auto mb-4" />
+                  <div className="w-24 h-24 relative rounded-full bg-gray-200 mx-auto mb-4" >
+<img src={leader.url} alt="" srcset="" className=" w-24 h-24 object-cover rounded-full" />
+                  </div>
                   <h3 className="text-lg font-semibold text-[#1a237e] mb-2">
                     {leader.title}
                   </h3>
