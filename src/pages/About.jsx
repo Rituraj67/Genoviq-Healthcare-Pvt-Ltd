@@ -32,9 +32,8 @@ import Autoplay from "embla-carousel-autoplay";
 import { motion, AnimatePresence } from "framer-motion";
 
 const AboutPage = () => {
-  const [scrollY, setScrollY] = useState(0);
   const { products } = useAppData();
-
+  
   const quickFacts = [
     {
       icon: <Building2 className="w-8 h-8" />,
@@ -56,16 +55,20 @@ const AboutPage = () => {
     },
   ];
 
+    const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
+    
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  
+
   return (
     <>
       <Helmet>
-        <title>About - Genoviq Healthcare</title>
+        <title>About</title>
       </Helmet>
       <div className="min-h-screen top-24 relative">
         {/* Hero Section with Parallax */}
@@ -95,7 +98,7 @@ const AboutPage = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl md:text-2xl text-center max-w-3xl"
             >
-              Innovation for a Healthier Tomorrow
+              Empowering Healthcare, Nationwide
             </motion.p>
           </div>
           {/* Animated scroll indicator */}
@@ -171,7 +174,7 @@ const AboutPage = () => {
               >
                 <p className="text-lg text-gray-700 leading-relaxed">
                   At Genoviq Healthcare, we specialize in driving pharmaceutical
-                  growth through strategic marketing excellence. With decades of
+                  growth through strategic marketing excellence. With years of
                   experience in the healthcare domain, we have established
                   ourselves as a trusted partner for pharmaceutical brands
                   looking to expand their reach and impact.

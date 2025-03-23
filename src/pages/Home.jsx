@@ -10,6 +10,7 @@ import TestimonialsSection from "../components/TestimonialsSection";
 import { Helmet } from "react-helmet-async";
 import banner from "../assets/HomeBG1.png"
 import NewsSection from "../components/NewsSection";
+import { useEffect } from "react";
 const slideVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -71,11 +72,13 @@ function Home() {
     },
   ];
 
+
   const statistics = [
     { number: 50, label: "Employees" },
     { number: 40, label: "Products" },
     { number: 9, label: "States" },
   ];
+
 
   return (
     <>
@@ -102,7 +105,7 @@ function Home() {
                 for a Healthier Tomorrow.
               </h1>
               <p className="text-lg font-serif md:text-xl text-gray-700 max-w-2xl">
-              "Delivering quality medicines and transforming millions of lives through strategic marketing and trusted healthcare partnerships.
+              Delivering quality medicines and transforming millions of lives through strategic marketing and trusted healthcare partnerships.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <Link to="/products" className="btn-primary">

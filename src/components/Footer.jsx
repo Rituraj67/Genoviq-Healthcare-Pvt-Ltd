@@ -22,7 +22,7 @@ const Footer = () => {
           />
           <p className="text-sm text-secondary-600 text-center max-w-md">
             "Genoviq Healthcare is a fast - growing Pharmaceutical
-            Organization."
+            Company."
           </p>
         </div>
       </div>
@@ -94,6 +94,14 @@ const Footer = () => {
                     className="text-secondary-200 hover:text-primary-300 transition-colors"
                   >
                     Products
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/newsroom"
+                    className="text-secondary-200 hover:text-primary-300 transition-colors"
+                  >
+                    Newsroom
                   </Link>
                 </li>
                 <li>

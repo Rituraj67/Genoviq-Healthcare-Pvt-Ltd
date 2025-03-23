@@ -23,10 +23,10 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="absolute bottom-0 right-0 bg-white p-6 rounded-lg shadow-xl"
+              className="absolute bottom-0 right-0 bg-white p-2 sm:p-3 md:p-6 rounded-lg shadow-xl"
             >
-              <div className="text-4xl font-bold text-primary-500">5+</div>
-              <div className="text-sm text-gray-600 uppercase tracking-wider">Year Experience</div>
+              <div className=" text-xl sm:text-2xl md:text-4xl font-bold text-primary-500">5+</div>
+              <div className="text-xs md:text-sm text-gray-600 uppercase tracking-wider">Year Experience</div>
             </motion.div>
           </motion.div>
 

@@ -8,7 +8,7 @@ import {
   FileClock,
 } from "lucide-react";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import banner from "../assets/CareerBG1.webp";
 import { Helmet } from "react-helmet-async";
 import { useAppData } from "../context/AppDataContext";
@@ -31,12 +31,12 @@ const Career = () => {
     "Training & Medical Education",
   ];
   const { jobs } = useAppData();
-  
+
 
   return (
     <>
       <Helmet>
-        <title>Careers - Genoviq Healthcare</title>
+        <title>Careers</title>
       </Helmet>
       <div className="min-h-screen top-24 relative">
         {/* Hero Section */}

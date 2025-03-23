@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MapPin, Mail, Phone, MapPinHouse } from "lucide-react";
 import contactbg from "../assets/ContactBG.png";
 import GoogleMapPreview from "../components/GoogleMapPreview";
@@ -49,6 +49,8 @@ const ContactPage = () => {
     }
   };
 
+ 
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -59,7 +61,7 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Contact - Genoviq Healthcare</title>
+        <title>Contact</title>
       </Helmet>
       <div className="min-h-screen  bg-gradient-to-b from-gray-50 container relative top-24 pt-20 pb-24 md:pt-32 md:pb-40 to-gray-100">
         {/* Background Image */}

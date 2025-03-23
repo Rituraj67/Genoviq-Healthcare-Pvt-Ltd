@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NewsHero from "../components/NewsHero";
 import NewsFilters from "../components/NewsFilters.jsx";
 
 import NewsCardNR from "../components/NewsCardNR";
 import { useAppData } from "../context/AppDataContext.jsx";
+import { Helmet } from "react-helmet-async";
 
 const Newsroom = () => {
   const { news } = useAppData();
@@ -26,6 +27,9 @@ const Newsroom = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Newsroom</title>
+      </Helmet>
       <div className="min-h-screen top-24  relative bg-gray-50">
         {/* Hero Section */}
         <NewsHero />

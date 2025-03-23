@@ -10,6 +10,7 @@ import "./App.css"
 import Newsroom from "./pages/Newsroom"
 import LightningLoader from "./utils/loaders/LightningLoader"
 import { useAppData } from "./context/AppDataContext"
+import ScrollToTop from "./components/ScrollToTop"
 
 
 
@@ -19,6 +20,7 @@ function App() {
   
   return (
     <Router>
+    <ScrollToTop/>
     <LightningLoader isLoading={isLoading}/>
       <div className="flex flex-col min-h-screen">
         <Navbar />
